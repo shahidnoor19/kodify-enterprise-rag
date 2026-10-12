@@ -15,3 +15,4 @@ An enterprise RAG application, built step by step in the Kodify Dev YouTube cour
 2. RAG concepts in depth
 3. Azure: resource group, Microsoft Foundry and model deployments
 4. Azure: AI Search and Blob Storage
+5. Backend from scratch: Web API, configuration, Foundry client and the first agent

@@ -1,0 +1,12 @@
+@RagApi_HostAddress = http://localhost:5126
+
+### Is the API configured?
+GET {{RagApi_HostAddress}}/api/health
+
+### Ask our first agent
+POST {{RagApi_HostAddress}}/api/chat
+Content-Type: application/json
+
+{
+  "message": "In two sentences, what is Retrieval-Augmented Generation?"
+}
