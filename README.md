@@ -13,3 +13,4 @@ An enterprise RAG application, built step by step in the Kodify Dev YouTube cour
 ## Episodes
 1. Welcome, live demo, tech stack and project setup
 2. RAG concepts in depth
+3. Azure: resource group, Microsoft Foundry and model deployments
