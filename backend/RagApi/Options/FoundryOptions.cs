@@ -9,6 +9,8 @@ public sealed class FoundryOptions
     public string ApiKey { get; set; } = "";
     public string ChatDeployment { get; set; } = "gpt-4.1-mini";
     public string EmbeddingDeployment { get; set; } = "text-embedding-3-small";
+    public string EmbeddingModel { get; set; } = "text-embedding-3-small";
+    public int EmbeddingDimensions { get; set; } = 1536;
     public string ImageDeployment { get; set; } = "gpt-image-1-mini";
 
     public bool IsConfigured =>
