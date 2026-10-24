@@ -24,6 +24,11 @@ builder.Services.AddHostedService<SearchInitializer>();
 builder.Services.AddSingleton<KnowledgeSearch>();
 builder.Services.AddSingleton<AnswerService>();
 
+// Images
+builder.Services.AddSingleton<ImageKnowledge>();
+builder.Services.AddSingleton<ImageTools>();
+builder.Services.AddSingleton<ImageAgent>();
+
 builder.Services.AddControllers();
 builder.Services.AddOpenApi();
 

@@ -33,6 +33,13 @@ public sealed class BlobStore
         }, ct);
     }
 
+    public async Task<BlobDownloadInfo?> DownloadAsync(string fileName, CancellationToken ct)
+    {
+        var blob = _documents.GetBlobClient(fileName);
+        if (!await blob.ExistsAsync(ct)) return null;
+        return (await blob.DownloadAsync(ct)).Value;
+    }
+
     public async Task<List<BlobItem>> ListAsync(CancellationToken ct)
     {
         var blobs = new List<BlobItem>();

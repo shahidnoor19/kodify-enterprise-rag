@@ -18,3 +18,4 @@ An enterprise RAG application, built step by step in the Kodify Dev YouTube cour
 5. Backend from scratch: Web API, configuration, Foundry client and the first agent
 6. Knowledge ingestion: Blob Storage, historical data and the Azure AI Search indexer pipeline
 7. Retrieval and answers: hybrid search, semantic ranker, grounding, citations and streaming
+8. Image RAG and image generation with agent tools
