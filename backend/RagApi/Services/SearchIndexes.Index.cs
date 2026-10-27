@@ -6,6 +6,7 @@ public sealed partial class SearchIndexes
 {
     private const string VectorProfile = "vector-profile";
     private const string Vectorizer = "foundry-vectorizer";
+    public const string SemanticConfigName = "default-semantic";
 
     /// <summary>The knowledge index: one search document per chunk.</summary>
     private SearchIndex BuildKnowledgeIndex() => new(_search.KnowledgeIndexName)
@@ -32,6 +33,18 @@ public sealed partial class SearchIndexes
             // The vectorizer embeds the user's question at query time, with the same model.
             Vectorizers = { new AzureOpenAIVectorizer(Vectorizer) { Parameters = EmbeddingParameters() } },
             Profiles = { new VectorSearchProfile(VectorProfile, "hnsw") { VectorizerName = Vectorizer } },
+        },
+        // The semantic ranker re-orders the best results with a language model.
+        SemanticSearch = new SemanticSearch
+        {
+            Configurations =
+            {
+                new SemanticConfiguration(SemanticConfigName, new SemanticPrioritizedFields
+                {
+                    TitleField = new SemanticField("fileName"),
+                    ContentFields = { new SemanticField("content") },
+                }),
+            },
         },
     };
 

@@ -1,5 +1,6 @@
 using RagApi.Options;
 using RagApi.Services;
+using Scalar.AspNetCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -19,6 +20,10 @@ builder.Services.AddSingleton<SearchIndexes>();
 builder.Services.AddSingleton<KnowledgeBaseService>();
 builder.Services.AddHostedService<SearchInitializer>();
 
+// Retrieval and answers
+builder.Services.AddSingleton<KnowledgeSearch>();
+builder.Services.AddSingleton<AnswerService>();
+
 builder.Services.AddControllers();
 builder.Services.AddOpenApi();
 
@@ -27,6 +32,7 @@ var app = builder.Build();
 if (app.Environment.IsDevelopment())
 {
     app.MapOpenApi();
+    app.MapScalarApiReference();
 }
 
 app.MapControllers();

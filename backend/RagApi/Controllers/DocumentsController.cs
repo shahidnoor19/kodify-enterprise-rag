@@ -6,7 +6,7 @@ namespace RagApi.Controllers;
 
 [ApiController]
 [Route("api/documents")]
-public sealed class DocumentsController(KnowledgeBaseService knowledgeBase) : ControllerBase
+public sealed class DocumentsController(KnowledgeBaseService knowledgeBase, BlobStore blobs) : ControllerBase
 {
     /// <summary>Every document in Blob Storage, with its indexing status.</summary>
     [HttpGet]
@@ -20,5 +20,13 @@ public sealed class DocumentsController(KnowledgeBaseService knowledgeBase) : Co
         foreach (var file in files)
             results.Add(await knowledgeBase.UploadAsync(file, ct));
         return results;
+    }
+
+    // The original file, so a client can open it.
+    [HttpGet("{fileName}")]
+    public async Task<IActionResult> Download(string fileName, CancellationToken ct)
+    {
+        var blob = await blobs.DownloadAsync(Path.GetFileName(fileName), ct);
+        return blob is null ? NotFound() : File(blob.Content, blob.ContentType);
     }
 }
