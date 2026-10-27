@@ -2,6 +2,8 @@ using System.ClientModel;
 using Microsoft.Extensions.Options;
 using OpenAI;
 using OpenAI.Chat;
+using OpenAI.Embeddings;
+using OpenAI.Images;
 using RagApi.Options;
 
 namespace RagApi.Services;
@@ -24,4 +26,6 @@ public sealed class FoundryClients
     }
 
     public ChatClient ChatClient => _client.GetChatClient(_options.ChatDeployment);
+    public EmbeddingClient EmbeddingClient => _client.GetEmbeddingClient(_options.EmbeddingDeployment);
+    public ImageClient ImageClient => _client.GetImageClient(_options.ImageDeployment);
 }

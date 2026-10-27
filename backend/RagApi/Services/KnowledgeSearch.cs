@@ -18,9 +18,10 @@ public sealed class KnowledgeSearch
         _client = new SearchClient(new Uri(search.Endpoint), search.KnowledgeIndexName, new AzureKeyCredential(search.ApiKey));
     }
 
-    public async Task<IReadOnlyList<SearchHit>> SearchAsync(string query, RetrievalMode mode, int top, CancellationToken ct)
+    public async Task<IReadOnlyList<SearchHit>> SearchAsync(string query, RetrievalMode mode, int top, CancellationToken ct, string? filter = null)
     {
         var options = new SearchOptions { Size = top, Select = { "fileName", "content" } };
+        options.Filter = filter;
 
         // Vector and hybrid: the vectorizer in the index embeds the question for us.
         if (mode != RetrievalMode.Keyword)

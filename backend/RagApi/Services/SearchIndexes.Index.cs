@@ -26,6 +26,7 @@ public sealed partial class SearchIndexes
             },
             new SimpleField("fileSizeBytes", SearchFieldDataType.Int64),
             new SimpleField("uploadedAt", SearchFieldDataType.DateTimeOffset) { IsSortable = true },
+            new SimpleField("isImage", SearchFieldDataType.Boolean) { IsFilterable = true },
         },
         VectorSearch = new VectorSearch
         {
