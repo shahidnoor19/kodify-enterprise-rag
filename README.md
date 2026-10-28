@@ -19,3 +19,4 @@ An enterprise RAG application, built step by step in the Kodify Dev YouTube cour
 6. Knowledge ingestion: Blob Storage, historical data and the Azure AI Search indexer pipeline
 7. Retrieval and answers: hybrid search, semantic ranker, grounding, citations, streaming and follow-up questions
 8. Image RAG, image generation with agent tools, and the streams for the interface
+9. Angular frontend from scratch: signals, streaming chat, citations, image mode and the library

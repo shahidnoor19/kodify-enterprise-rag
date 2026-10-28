@@ -1,0 +1,74 @@
+:root {
+  --bg: #212121;
+  --bg-sidebar: #171717;
+  --bg-elev: #2f2f2f;
+  --bg-hover: #2a2a2a;
+  --bg-active: #333333;
+  --bg-input: #303030;
+  --border: #3a3a3a;
+  --border-soft: #2c2c2c;
+  --text: #ececec;
+  --text-muted: #a3a3a3;
+  --text-faint: #7a7a7a;
+  --accent: #10a37f;
+  --danger: #ef4444;
+  --danger-soft: rgba(239, 68, 68, 0.12);
+  --cite-bg: #3b3b3b;
+  --shadow: 0 8px 30px rgba(0, 0, 0, 0.35);
+  color-scheme: dark;
+}
+
+* { box-sizing: border-box; }
+
+html, body {
+  height: 100%;
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: ui-sans-serif, system-ui, 'Segoe UI', Roboto, Arial, sans-serif;
+  font-size: 15px;
+  line-height: 1.6;
+}
+
+button { font: inherit; color: inherit; cursor: pointer; }
+input, textarea { font: inherit; color: inherit; }
+
+.icon-btn {
+  display: inline-grid;
+  place-items: center;
+  width: 36px;
+  height: 36px;
+  border: 0;
+  border-radius: 8px;
+  background: transparent;
+  color: var(--text-muted);
+}
+.icon-btn:hover { background: var(--bg-hover); color: var(--text); }
+
+.md { overflow-wrap: anywhere; }
+.md > :first-child { margin-top: 0; }
+.md > :last-child { margin-bottom: 0; }
+.md p, .md ul, .md ol { margin: 0 0 0.85em; }
+.md ul, .md ol { padding-left: 1.4em; }
+.md a { color: var(--accent); }
+.md code { padding: 0.1em 0.35em; border-radius: 5px; background: var(--cite-bg); font-size: 0.88em; }
+.md pre { padding: 14px 16px; overflow-x: auto; border-radius: 10px; background: #0d0d0d; }
+.md pre code { padding: 0; background: none; }
+.md table { display: block; overflow-x: auto; border-collapse: collapse; }
+.md th, .md td { padding: 6px 10px; border: 1px solid var(--border); }
+.md img { display: block; width: min(560px, 100%); border-radius: 16px; }
+.md .cite {
+  min-width: 18px;
+  height: 18px;
+  margin: 0 1px;
+  padding: 0 5px;
+  border: 0;
+  border-radius: 9px;
+  background: var(--cite-bg);
+  color: var(--text-muted);
+  font-size: 11px;
+  font-weight: 600;
+  line-height: 1;
+  vertical-align: 2px;
+}
+.md .cite:hover { background: var(--accent); color: #fff; }
