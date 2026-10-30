@@ -6,6 +6,20 @@
       "type": "dotnet",
       "request": "launch",
       "projectPath": "${workspaceFolder}/backend/RagApi/RagApi.csproj"
+},
+    {
+      "name": "Angular in Chrome",
+      "type": "chrome",
+      "request": "attach",
+      "port": 9334,
+      "urlFilter": "http://localhost:4200/*",
+      "webRoot": "${workspaceFolder}/frontend"
+}
+  ],
+  "compounds": [
+    {
+      "name": "Full stack",
+      "configurations": ["RagApi", "Angular in Chrome"]
     }
   ]
 }

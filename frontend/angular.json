@@ -79,6 +79,9 @@
           },
           "defaultConfiguration": "production"
         },
+        "test": {
+          "builder": "@angular/build:unit-test"
+        },
         "serve": {
           "builder": "@angular/build:dev-server",
           "configurations": {
