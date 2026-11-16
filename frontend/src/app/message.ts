@@ -31,7 +31,7 @@ import { ChatMessage, isImage } from './models';
             </div>
           }
 
-          <div class="md" [innerHTML]="m.content | markdown: m.citations.length" (click)="onCite($event)"></div>
+          <div class="md" [innerHTML]="m.content | markdown: m.citations" (click)="onCite($event)"></div>
           @if (m.streaming && m.content) {
             <span class="caret"></span>
           }

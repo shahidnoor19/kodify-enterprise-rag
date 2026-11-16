@@ -1,7 +1,7 @@
 import { TestBed } from '@angular/core/testing';
 import { Api } from './api';
 import { ChatStore } from './chat-store';
-import { StreamEvent } from './models';
+import { Citation, StreamEvent } from './models';
 import { MarkdownPipe } from './markdown.pipe';
 
 function createStore(events: StreamEvent[]) {
@@ -46,17 +46,24 @@ describe('ChatStore', () => {
 });
 
 describe('MarkdownPipe', () => {
-  const render = (text: string, citations = 0) => {
+  const cites = (...numbers: number[]): Citation[] => numbers.map(n => ({ number: n, fileName: `doc${n}.pdf`, snippet: '' }));
+  const render = (text: string, citations: Citation[] = []) => {
     const pipe = TestBed.runInInjectionContext(() => new MarkdownPipe());
     return (pipe.transform(text, citations) as any).changingThisBreaksApplicationSecurity as string;
   };
 
   it('turns a citation mark into a button', () => {
-    expect(render('Ten days [1]', 2)).toContain('data-cite="1"');
+    expect(render('Ten days [1]', cites(1, 2))).toContain('data-cite="1"');
+  });
+
+  it('makes a cited source clickable even when the numbers have a gap', () => {
+    const html = render('Leave [1] and travel [3]', cites(1, 3));
+    expect(html).toContain('data-cite="1"');
+    expect(html).toContain('data-cite="3"');
   });
 
   it('keeps a number that is not a source', () => {
-    const html = render('See [5]', 2);
+    const html = render('See [5]', cites(1, 2));
     expect(html).toContain('[5]');
     expect(html).not.toContain('data-cite');
   });
